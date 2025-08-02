@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxuryDrive - Premium Car Showcase</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h1><i class="fas fa-car"></i> LuxuryDrive</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+        <a href="brands.html" class="nav-link"><i class="fas fa-tags"></i> Brands</a>
+        <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> Gallery</a>
+        <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="signup.html" class="nav-link signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <img src="images/Slideshow/2025-Pagani-Utopia-Roadster-006-1080.jpg" alt="Luxury Car Showcase" class="hero-image">
+    </div>
+    <div class="hero-content">
+      <h2>Discover Automotive Excellence</h2>
+      <p>Experience the world's finest automobiles showcased by leading manufacturers</p>
+      <div class="hero-buttons">
+        <button class="cta-button primary" onclick="window.location.href='brands.html'">
+          <i class="fas fa-search"></i> Explore Cars
+        </button>
+        <button class="cta-button secondary" onclick="window.location.href='gallery.html'">
+          <i class="fas fa-images"></i> View Gallery
+        </button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <i class="fas fa-car"></i>
+          <h3><span class="stat-number cars">0</span></h3>
+          <p>Premium Cars</p>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-users"></i>
+          <h3><span class="stat-number visitors">0</span></h3>
+          <p>Happy Visitors</p>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-globe"></i>
+          <h3><span class="stat-number countries">0</span></h3>
+          <p>Countries</p>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-award"></i>
+          <h3><span class="stat-number years">0</span></h3>
+          <p>Years Experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Partners Section: Animated Brand Logos Ticker -->
+  <section class="partners-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Partners</h2>
+        <p>Leading automotive brands we proudly showcase</p>
+      </div>
+      <div class="partners-ticker" id="partnersTicker">
+        <!-- Brand logos will be injected here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cars Section -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Vehicles</h2>
+        <p>Handpicked luxury and performance cars for the discerning enthusiast</p>
+      </div>
+      <div class="featured-cars" id="featuredCars"></div>
+      <div class="section-footer">
+        <button class="view-all-btn" onclick="window.location.href='brands.html'">
+          <i class="fas fa-arrow-right"></i> View All Cars
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Screen Section -->
+  <div id="homeScreen" style="display: block;">
+    <!-- Featured Cars Section -->
+    <section class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Vehicles</h2>
+          <p>Handpicked luxury and performance cars for the discerning enthusiast</p>
+        </div>
+        <div class="featured-cars" id="featuredCars"></div>
+        <div class="section-footer">
+          <button class="view-all-btn" onclick="showBrands()">
+            <i class="fas fa-arrow-right"></i> View All Cars
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Brands Screen Section -->
+  <div id="brandsScreen" style="display: none;">
+    <section class="brands-section">
+      <div class="container">
+        <div class="brands-header">
+          <h2>All Car Brands</h2>
+          <p>Explore our complete collection of premium vehicles</p>
+        </div>
+        
+        <div class="brands-filter">
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterCars('All')">
+              <i class="fas fa-th"></i>
+              <span class="btn-text">All Brands</span>
+            </button>
+            <button class="filter-btn" onclick="filterCars('Tesla')">
+              <i class="fas fa-bolt"></i>
+              <span class="btn-text">Tesla</span>
+            </button>
+            <button class="filter-btn" onclick="filterCars('BMW')">
+              <i class="fas fa-car"></i>
+              <span class="btn-text">BMW</span>
+            </button>
+            <button class="filter-btn" onclick="filterCars('Audi')">
+              <i class="fas fa-car-side"></i>
+              <span class="btn-text">Audi</span>
+            </button>
+            <button class="filter-btn" onclick="filterCars('Toyota')">
+              <i class="fas fa-car"></i>
+              <span class="btn-text">Toyota</span>
+            </button>
+            <button class="filter-btn" onclick="filterCars('Ferrari')">
+              <i class="fas fa-car"></i>
+              <span class="btn-text">Ferrari</span>
+            </button>
+            <button class="clear-btn" id="clearFilter" onclick="clearFilter()" style="display: none;">
+              <i class="fas fa-times clear-icon"></i>
+              Clear Filter
+            </button>
+          </div>
+        </div>
+        
+        <div class="cards-container" id="carCards"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>Comprehensive automotive showcase solutions</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-search"></i>
+          <h3>Car Discovery</h3>
+          <p>Discover your perfect match from our extensive collection of premium vehicles</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-images"></i>
+          <h3>Visual Showcase</h3>
+          <p>High-quality photography and detailed galleries for every vehicle</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-star"></i>
+          <h3>Premium Experience</h3>
+          <p>Curated selection of the world's finest automobiles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Visitors Say</h2>
+        <p>Real experiences from satisfied visitors worldwide</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"LuxuryDrive helped me discover the perfect luxury car. Their showcase is unmatched!"</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Car Enthusiast</h4>
+              <span>Premium Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"The best car showcase platform I've ever used. Professional, reliable, and user-friendly."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Automotive Collector</h4>
+              <span>Verified Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>"Outstanding collection and excellent presentation. Highly recommended!"</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div>
+              <h4>Luxury Car Expert</h4>
+              <span>Industry Professional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Get notified about new vehicle showcases and exclusive content</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i> Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-car"></i> LuxuryDrive</h3>
+          <p>Your premier destination for discovering the world's finest automobiles. We showcase exceptional vehicles from leading manufacturers.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Drive, Premium City</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@luxurydrive.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 LuxuryDrive. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="carModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt="Car Image" />
+      <p id="modalDescription"></p>
+      <div class="modal-price">
+        <span id="modalPrice"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

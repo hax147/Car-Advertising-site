@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Brands - LuxuryDrive</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h1><i class="fas fa-car"></i> LuxuryDrive</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="brands.html" class="nav-link active"><i class="fas fa-tags"></i> Brands</a>
+        <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="gallery.html" class="nav-link"><i class="fas fa-images"></i> Gallery</a>
+        <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="signup.html" class="nav-link signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>All Car Brands</h1>
+      <p>Explore our complete collection of premium vehicles</p>
+    </div>
+  </section>
+
+  <!-- Brands Filter -->
+  <section class="brands-filter">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCars('All')">
+          <i class="fas fa-th"></i>
+          <span class="btn-text">All Brands</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Tesla')">
+          <i class="fas fa-bolt"></i>
+          <span class="btn-text">Tesla</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('BMW')">
+          <i class="fas fa-car"></i>
+          <span class="btn-text">BMW</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Audi')">
+          <i class="fas fa-car-side"></i>
+          <span class="btn-text">Audi</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Toyota')">
+          <i class="fas fa-car"></i>
+          <span class="btn-text">Toyota</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Ferrari')">
+          <i class="fas fa-car"></i>
+          <span class="btn-text">Ferrari</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Alfa Romeo')">
+          <i class="fas fa-car"></i>
+          <span class="btn-text">Alfa Romeo</span>
+        </button>
+        <button class="filter-btn" onclick="filterCars('Aston Martin')">
+          <i class="fas fa-car"></i>
+          <span class="btn-text">Aston Martin</span>
+        </button>
+        <button class="clear-btn" id="clearFilter" onclick="clearFilter()" style="display: none;">
+          <i class="fas fa-times clear-icon"></i>
+          Clear Filter
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cars Grid -->
+  <section class="cars-section">
+    <div class="container">
+      <div class="cars-header">
+        <h2 id="carsTitle">All Cars</h2>
+        <p id="carsCount">Showing <span id="carCount">0</span> vehicles</p>
+      </div>
+      
+      <div class="cards-container" id="carCards">
+        <!-- Cars will be loaded here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-car"></i> LuxuryDrive</h3>
+          <p>Your premier destination for discovering the world's finest automobiles. We showcase exceptional vehicles from leading manufacturers.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Drive, Premium City</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@luxurydrive.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 LuxuryDrive. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      displayCars('All');
+      updateCarCount();
+    });
+    
+    function updateCarCount() {
+      const carCards = document.querySelectorAll('.card, .featured-card');
+      const countElement = document.getElementById('carCount');
+      if (countElement) {
+        countElement.textContent = carCards.length;
+      }
+    }
+  </script>
+</body>
+</html> 

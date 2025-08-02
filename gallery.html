@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - LuxuryDrive</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <h1><i class="fas fa-car"></i> LuxuryDrive</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="brands.html" class="nav-link"><i class="fas fa-tags"></i> Brands</a>
+        <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="gallery.html" class="nav-link active"><i class="fas fa-images"></i> Gallery</a>
+        <a href="login.html" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="signup.html" class="nav-link signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Car Gallery</h1>
+      <p>Explore our stunning collection of premium vehicles</p>
+    </div>
+  </section>
+
+  <!-- Gallery Filter -->
+  <section class="gallery-filter-section">
+    <div class="container">
+      <div class="gallery-filter">
+        <div class="filter-buttons">
+          <button class="filter-btn active" onclick="filterGallery('all')">
+            <i class="fas fa-th"></i> All
+          </button>
+          <button class="filter-btn" onclick="filterGallery('tesla')">
+            <i class="fas fa-bolt"></i> Tesla
+          </button>
+          <button class="filter-btn" onclick="filterGallery('bmw')">
+            <i class="fas fa-flag-checkered"></i> BMW
+          </button>
+          <button class="filter-btn" onclick="filterGallery('audi')">
+            <i class="fas fa-gem"></i> Audi
+          </button>
+          <button class="filter-btn" onclick="filterGallery('toyota')">
+            <i class="fas fa-leaf"></i> Toyota
+          </button>
+          <button class="filter-btn" onclick="filterGallery('ferrari')">
+            <i class="fas fa-tachometer-alt"></i> Ferrari
+          </button>
+          <button class="filter-btn" onclick="filterGallery('alfa')">
+            <i class="fas fa-car-side"></i> Alfa Romeo
+          </button>
+          <button class="filter-btn" onclick="filterGallery('aston')">
+            <i class="fas fa-crown"></i> Aston Martin
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery items will be loaded dynamically by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="Car Image">
+      <div class="lightbox-info">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxBrand"></p>
+      </div>
+    </div>
+    <div class="lightbox-nav">
+      <button class="lightbox-prev" onclick="changeLightboxImage(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" onclick="changeLightboxImage(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-car"></i> LuxuryDrive</h3>
+          <p>Your premier destination for discovering the world's finest automobiles. We showcase exceptional vehicles from leading manufacturers.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="brands.html">Brands</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Drive, Premium City</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@luxurydrive.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 LuxuryDrive. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Gallery filter function
+    function filterGallery(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Reload gallery with filtered content
+      loadRandomGallery();
+    }
+    
+    // Lightbox functions
+    let currentLightboxIndex = 0;
+    let lightboxImages = [];
+    
+    function openLightbox(index) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxBrand = document.getElementById('lightboxBrand');
+      
+      currentLightboxIndex = index;
+      
+      // Get all gallery images
+      const galleryItems = document.querySelectorAll('.gallery-item img');
+      lightboxImages = Array.from(galleryItems).map(img => ({
+        src: img.src,
+        title: img.alt,
+        brand: img.alt.split(' ')[0]
+      }));
+      
+      const currentImage = lightboxImages[index];
+      lightboxImage.src = currentImage.src;
+      lightboxTitle.textContent = currentImage.title;
+      lightboxBrand.textContent = currentImage.brand;
+      
+      lightbox.style.display = 'flex';
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+    
+    function changeLightboxImage(direction) {
+      currentLightboxIndex = (currentLightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+      const currentImage = lightboxImages[currentLightboxIndex];
+      
+      document.getElementById('lightboxImage').src = currentImage.src;
+      document.getElementById('lightboxTitle').textContent = currentImage.title;
+      document.getElementById('lightboxBrand').textContent = currentImage.brand;
+    }
+    
+    // Close lightbox when clicking outside
+    document.getElementById('lightbox').onclick = function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    };
+  </script>
+</body>
+</html> 
