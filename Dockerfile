@@ -1,5 +1,11 @@
-# Use the full NGINX base image (not Alpine)
-FROM nginx
+# Use official Nginx image (non-Alpine)
+FROM nginx:latest
 
-# Copy all website files into the default NGINX html folder
+# Remove default index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy your site files
 COPY . /usr/share/nginx/html
+
+# Expose default HTTP port
+EXPOSE 80

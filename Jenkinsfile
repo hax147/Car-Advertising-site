@@ -5,7 +5,6 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo '📥 Cloning GitHub repository...'
-                // No command needed here; Jenkins clones the repo automatically
             }
         }
 
@@ -16,9 +15,9 @@ pipeline {
             }
         }
 
-        stage('Stop and Remove Old Container') {
+        stage('Stop Old Container') {
             steps {
-                echo '🧹 Cleaning up old container...'
+                echo '🧹 Stopping old container if exists...'
                 sh '''
                 docker stop car-ad-container || true
                 docker rm car-ad-container || true
@@ -28,7 +27,7 @@ pipeline {
 
         stage('Run New Container') {
             steps {
-                echo '🚀 Running updated container...'
+                echo '🚀 Running new container...'
                 sh 'docker run -d -p 8080:80 --name car-ad-container car-ad-site'
             }
         }
